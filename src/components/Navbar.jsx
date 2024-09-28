@@ -80,12 +80,12 @@ const Navbar = () => {
                     onClick={() => setVisible(false)}
                     className="absolute top-4 right-4 text-gray-600"
                 >
-                    Close
+                    <i class="bi bi-x"></i>
                 </button>
 
                 {/* Sidebar Content */}
                 <ul className="flex flex-col gap-5 p-4 mt-4">
-                    <li>
+                    <li>        
                         <NavLink to="/" onClick={() => setVisible(false)}>
                             Home
                         </NavLink>
