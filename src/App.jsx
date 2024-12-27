@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Home from './pages/Home'
 import Collection from './pages/Collection'
 import Cart from './pages/Cart'
@@ -15,9 +15,29 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 
 const App = () => {
+  let [light,setLight]=useState(false)
+  let [bgcolor,setbgcolor]=useState('white')
+  let [clr,setclr]=useState('black')
+  let toggleref=useRef()
+  let lightfun=()=>{
+    if(light==false){
+      setLight(true)
+      setbgcolor('pink')
+      setclr('black')
+      toggleref.current.classList.add('active')
+    }
+    else{
+      setLight(false)
+      setbgcolor('white')
+      setclr('black')
+      toggleref.current.classList.remove('active')
+    }
+  }
   return (
-    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
-      <Navbar />
+    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'
+    style={{background:bgcolor,color:clr}}
+    >
+      <Navbar lightfun={lightfun} bgcolor={bgcolor} toggleref={toggleref}/>
       <SearchBar />
       <Routes>
         <Route path='/' element={<Home />} />
